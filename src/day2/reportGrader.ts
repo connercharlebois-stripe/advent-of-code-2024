@@ -1,4 +1,4 @@
-const grade = (input) => {
+const grade = (input: number[]) => {
     try {
         // check either all increasing or all decreasing
         const first = input[0];
@@ -19,18 +19,18 @@ const grade = (input) => {
         console.log("safe");
         return true
         // check diffs >= 1 and <= 3
-    } catch (e) {
+    } catch (e: any) {
         console.log(e.message);
         return false;
     }
 }
 
-const gradeOne = (str) => {
+export const gradeOne = (str: string) => {
     const input = str.split(" ").map(n => Number(n));
     return grade(input);
 }
-
-const gradeAllPossibilities = (str) => {
+ 
+export const gradeAllPossibilities = (str: string) => {
     let success = false
     const input = str.split(" ").map(n => Number(n));
     const pass = grade(input);
@@ -52,7 +52,3 @@ const gradeAllPossibilities = (str) => {
     return success
 
 }
-
-module.exports = {
-    gradeOne, gradeAllPossibilities
-};
