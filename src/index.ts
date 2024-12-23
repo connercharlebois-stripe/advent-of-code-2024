@@ -1,11 +1,16 @@
 // import fs;
 // const fs = require("fs");
-import {createReadStream} from "fs";
+import {createReadStream, readFileSync} from "fs";
 import * as readline from 'readline';
 
 // const readline = require('readline');
 import {gradeOne, gradeAllPossibilities}  from "./day2/reportGrader";
+import Day3, {process} from "./day3/multiplier";
 import { dirname } from "path";
+
+const data = readFileSync(dirname(require.main!.filename)+"/../inputs/day3.txt", {
+  encoding: "utf-8"
+});
 
 const fileStream  = createReadStream(dirname(require.main!.filename)+"/../inputs/day2.txt");
 const rl = readline.createInterface({
@@ -33,7 +38,10 @@ async function main() {
 
   console.log({passes, fails, total})
 }
-main();
+// main();
+// console.log(process(data, false));
+console.log(process(data, true));
+// Day3();
 
 // let tally = 0;
 // const data = fs.readFile("./day1/input.txt", (err, data) => {
