@@ -1,36 +1,45 @@
 const fs = require("fs");
 const readline = require('readline');
-let tally = 0;
-let similarity = 0;
-const firstVals = [], secondVals = [];
-async function processLineByLine() {
-  const fileStream = fs.createReadStream('./day1/input.txt');
-  const rl = readline.createInterface({
-    input: fileStream,
-    crlfDelay: Infinity
-  });
-  // Note: we use the crlfDelay option to recognize all instances of CR LF
-  // ('\r\n') in input.txt as a single line break.
+const {gradeOne, gradeAllPossibilities} = require("./day2/reportGrader");
 
+const fileStream = fs.createReadStream('./day2/input.txt');
+const rl = readline.createInterface({
+  input: fileStream,
+  crlfDelay: Infinity
+});
+async function main() {
+  let passes = 0, fails = 0, total = 0;
   for await (const line of rl) {
+    // if (total >= 1){
+    //   break;
+    // }
+    total++;
     // Each line in input.txt will be successively available here as `line`.
-    // console.log(`Line from file: ${line}`);
-    const vals = line.split(/\D+/);
-    firstVals.push(vals[0]);
-    secondVals.push(vals[1]);
-  }
-  const sortedFirst = firstVals.sort();
-  const sortedSecond = secondVals.sort();
-  sortedFirst.forEach((i, index) => {
-    tally += Math.abs(i - sortedSecond[index])
-    similarity += i * sortedSecond.filter(num => num === i).length
-  })
+    const res = gradeOne(line);
+    const res2 = gradeAllPossibilities(line);
+    console.log({line, res, res2})
+    if (res2){
+      passes++;
+    } else {
+      fails++;
+    }
 
-  console.log({tally, similarity})
+  }
+
+  console.log({passes, fails, total})
 }
-processLineByLine();
+main();
 
 // let tally = 0;
 // const data = fs.readFile("./day1/input.txt", (err, data) => {
 //     console.log(data);
 // })
+
+
+
+// reportGrader("7 6 4 2 1")
+// reportGrader("1 2 7 8 9")
+// reportGrader("9 7 6 2 1")
+// reportGrader("1 3 2 4 5")
+// reportGrader("8 6 4 4 1")
+// reportGrader("1 3 6 7 9")
