@@ -6,42 +6,46 @@ import * as readline from 'readline';
 // const readline = require('readline');
 import {gradeOne, gradeAllPossibilities}  from "./day2/reportGrader";
 import Day3, {process} from "./day3/multiplier";
+import { crossMasSearch, main as d4, search } from "./day4";
 import { dirname } from "path";
 
-const data = readFileSync(dirname(require.main!.filename)+"/../inputs/day3.txt", {
+const data = readFileSync(dirname(require.main!.filename)+"/../inputs/day4.txt", {
   encoding: "utf-8"
 });
+// search(data);
+crossMasSearch(data);
+// d4();
+// const fileStream  = createReadStream(dirname(require.main!.filename)+"/../inputs/day2.txt");
+// const rl = readline.createInterface({
+//   input: fileStream,
+//   crlfDelay: Infinity  
+// }); 
+// async function main() {
+//   let passes = 0, fails = 0, total = 0;
+//   for await (const line of rl) {
+//     // if (total >= 1){
+//     //   break;
+//     // }
+//     total++; 
+//     // Each line in input.txt will be successively available here as `line`.
+//     const res = gradeOne(line);
+//     const res2 = gradeAllPossibilities(line);
+//     console.log({line, res, res2})
+//     if (res2){
+//       passes++;
+//     } else {
+//       fails++;
+//     }
 
-const fileStream  = createReadStream(dirname(require.main!.filename)+"/../inputs/day2.txt");
-const rl = readline.createInterface({
-  input: fileStream,
-  crlfDelay: Infinity  
-}); 
-async function main() {
-  let passes = 0, fails = 0, total = 0;
-  for await (const line of rl) {
-    // if (total >= 1){
-    //   break;
-    // }
-    total++; 
-    // Each line in input.txt will be successively available here as `line`.
-    const res = gradeOne(line);
-    const res2 = gradeAllPossibilities(line);
-    console.log({line, res, res2})
-    if (res2){
-      passes++;
-    } else {
-      fails++;
-    }
+//   }
 
-  }
-
-  console.log({passes, fails, total})
-}
+//   console.log({passes, fails, total})
+// }
 // main();
 // console.log(process(data, false));
-console.log(process(data, true));
+// console.log(process(data, true));
 // Day3();
+// d4();
 
 // let tally = 0;
 // const data = fs.readFile("./day1/input.txt", (err, data) => {
