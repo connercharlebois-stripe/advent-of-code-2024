@@ -8,12 +8,15 @@ import {gradeOne, gradeAllPossibilities}  from "./day2/reportGrader";
 import Day3, {process} from "./day3/multiplier";
 import { crossMasSearch, main as d4, search } from "./day4";
 import { dirname } from "path";
-
-const data = readFileSync(dirname(require.main!.filename)+"/../inputs/day4.txt", {
+import Day5 from "./day5";
+const data = readFileSync(dirname(require.main!.filename)+"/../inputs/day5.txt", {
   encoding: "utf-8"
 });
+// Day5.main();
+Day5.process(data, false);
+
 // search(data);
-crossMasSearch(data);
+// crossMasSearch(data);
 // d4();
 // const fileStream  = createReadStream(dirname(require.main!.filename)+"/../inputs/day2.txt");
 // const rl = readline.createInterface({

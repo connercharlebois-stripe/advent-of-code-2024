@@ -1,15 +1,20 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 // import fs;
 // const fs = require("fs");
 const fs_1 = require("fs");
-const day4_1 = require("./day4");
 const path_1 = require("path");
-const data = (0, fs_1.readFileSync)((0, path_1.dirname)(require.main.filename) + "/../inputs/day4.txt", {
+const day5_1 = __importDefault(require("./day5"));
+const data = (0, fs_1.readFileSync)((0, path_1.dirname)(require.main.filename) + "/../inputs/day5.txt", {
     encoding: "utf-8"
 });
+// Day5.main();
+day5_1.default.process(data, false);
 // search(data);
-(0, day4_1.crossMasSearch)(data);
+// crossMasSearch(data);
 // d4();
 // const fileStream  = createReadStream(dirname(require.main!.filename)+"/../inputs/day2.txt");
 // const rl = readline.createInterface({
